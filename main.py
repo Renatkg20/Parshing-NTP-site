@@ -1,5 +1,6 @@
 import requests
 import re
+
 from bs4 import BeautifulSoup
 def nts():
     url = "https://www.timeserver.ru/cities/kg/bishkek"
@@ -23,5 +24,14 @@ def nts():
     print(l2[5], l1[6], "/ Бишкек,", "Координаты:",l2[7])
     print(l2[8], l1[9], "резидентов")
     print(l2[9], l1[10][:8])
+    soup = BeautifulSoup(res, 'html.parser')
+    soup = soup.find('div', {'class': 'timeview-data'})
+    return ("Время в Бишкеке: " + soup.get_text() + " / чч:мм:сс")
+ 
 
 print(nts())
+
+
+
+
+ 
